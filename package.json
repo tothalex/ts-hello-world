@@ -4,7 +4,9 @@
   "description": "",
   "scripts": {
     "build": "tsc",
-    "dev": "tsx watch ./src/index.ts"
+    "dev": "concurrently \"pnpm run dev:html\" \"pnpm run dev:server\"",
+    "dev:server": "tsx watch ./src/index.ts",
+    "dev:html": "esbuild ./src/public/index.ts --bundle --outdir=./src/public/scripts/ --watch"
   },
   "repository": {
     "type": "git",
@@ -18,14 +20,22 @@
   "homepage": "https://github.com/tothalex/typescript-template#readme",
   "devDependencies": {
     "@eslint/js": "^9.1.1",
+    "@types/node": "^20.12.8",
     "@typescript-eslint/eslint-plugin": "^7.8.0",
     "@typescript-eslint/parser": "^7.8.0",
+    "concurrently": "^8.2.2",
+    "esbuild": "^0.20.2",
     "eslint": "^9.1.1",
     "eslint-config-prettier": "^9.1.0",
     "globals": "^15.1.0",
     "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
     "tsx": "^4.8.2",
     "typescript": "^5.4.5",
     "typescript-eslint": "^7.8.0"
+  },
+  "dependencies": {
+    "@fastify/static": "^7.0.3",
+    "fastify": "^4.26.2"
   }
 }
