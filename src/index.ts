@@ -10,7 +10,7 @@ fastify.register(FastifyStatic, {
   root: path.join(__dirname, 'public'),
 })
 
-fastify.listen({ port: 3000 }, function (err, _) {
+fastify.listen({ port: 8000 }, function (err, _) {
   if (err) {
     fastify.log.error(err)
     process.exit(1)
